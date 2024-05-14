@@ -45,18 +45,17 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.image('player', 'assets/shipss/player_ship.png');
-    this.load.image('enemy1', 'assets/shipss/normal_ship.png');
-    this.load.image('enemy2', 'assets/shipss/big_ship.png');
-    this.load.image('enemyLaser', 'assets/shipss/enemy_laser.png');
-    this.load.image('playerLaser', 'assets/shipss/player_laser.png');
-    this.load.audio('deathShip', 'assets/impact_sounds/enemy_death.ogg');
-    this.load.image('space', 'assets/background/bg_02_h.png');
+    this.load.image('player', '/shipss/player_ship.png');
+    this.load.image('enemy1', '/shipss/normal_ship.png');
+    this.load.image('enemy2', '/shipss/big_ship.png');
+    this.load.image('enemyLaser', '/shipss/enemy_laser.png');
+    this.load.image('playerLaser', '/shipss/player_laser.png');
+    this.load.audio('deathShip', '/impact_sounds/enemy_death.ogg');
+    this.load.image('space', '/background/bg_02_h.png');
 }
 
 function create ()
 {
-    //  A simple background for our game
     this.add.image(666, 375, 'space');
     this.moveEnemyTimed = this.time.addEvent({ delay: 1000, callback: this.delayTime, callbackScope: this, loop: true});
     this.laserTimed = this.time.addEvent({delay: 500, callback: this.delayLaser, callbackScope: this, loop: false})
@@ -64,7 +63,6 @@ function create ()
     player = this.physics.add.sprite(650, 700, 'player');
     player.setCollideWorldBounds(true);
 
-    //  Input Events
     cursors = this.input.keyboard.createCursorKeys();
     enemies1 = this.physics.add.group({
          key: 'enemy1',
@@ -82,10 +80,7 @@ function create ()
      laserEnemy = this.physics.add.group({
         key: 'enemyLaser',
      })
-    //  laserPlayer = this.physics.add.group({
-    //     key: 'playerLaser',
-    //  }
-    //  )
+
     class LaserPlayer extends Phaser.GameObjects.Image
         {
             constructor (scene)
@@ -140,17 +135,10 @@ function create ()
 
     enemies1.children.iterate(function (child) {
 
-        //  Give each star a slightly different bounce
         child.setVelocityX(100);
         child.setCollideWorldBounds(true, 1, 1, true);
     });
 
-   // this.physics.add.collider(player, laserEnemy, playerDeath, null, this);
-   // this.physics.add.collider(enemies1, laserPlayer, enemyDeath, null, this);
-   // this.physics.add.collider(enemies2, laserPlayer, enemyDeath, null, this);
-   // bombs = this.physics.add.group();
-
-    //  The score
     scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#FFF' });
 
    this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -183,47 +171,6 @@ function update ()
         player.setVelocityX(0);
     }
 }
-
-// function shootLaser(player)
-// {
-
-//     star.disableBody(true, true);
-
-//     //  Add and update the score
-//     score += 10;
-//     scoreText.setText('Score: ' + score);
-
-//     if (stars.countActive(true) === 0)
-//     {
-//         //  A new batch of stars to collect
-//         stars.children.iterate(function (child) {
-
-//             child.enableBody(true, child.x, 0, true, true);
-
-//         });
-
-//         var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-
-//         var bomb = bombs.create(x, 16, 'bomb');
-//         bomb.setBounce(1);
-//         bomb.setCollideWorldBounds(true);
-//         bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-//         bomb.allowGravity = false;
-
-//     }
-// }
-
-// function hitBomb (player, bomb)
-// {
-//     this.physics.pause();
-
-//     player.setTint(0xff0000);
-
-//     player.anims.play('turn');
-
-//     gameOver = true;
-// }
-
 </script>
 
 </body>
