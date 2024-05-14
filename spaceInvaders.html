@@ -45,13 +45,13 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-    this.load.image('player', '/shipss/player_ship.png');
-    this.load.image('enemy1', '/shipss/normal_ship.png');
-    this.load.image('enemy2', '/shipss/big_ship.png');
-    this.load.image('enemyLaser', '/shipss/enemy_laser.png');
-    this.load.image('playerLaser', '/shipss/player_laser.png');
-    this.load.audio('deathShip', '/impact_sounds/enemy_death.ogg');
-    this.load.image('space', '/background/bg_02_h.png');
+    this.load.image('player', 'shipss/player_ship.png');
+    this.load.image('enemy1', 'shipss/normal_ship.png');
+    this.load.image('enemy2', 'shipss/big_ship.png');
+    this.load.image('enemyLaser', 'shipss/enemy_laser.png');
+    this.load.image('playerLaser', 'shipss/player_laser.png');
+    this.load.audio('deathShip', 'impact_sounds/enemy_death.ogg');
+    this.load.image('space', 'background/bg_02_h.png');
 }
 
 function create ()
